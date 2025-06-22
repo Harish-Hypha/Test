@@ -10,7 +10,9 @@ jobs:
           python-version: '3.x'
       - run: python --version
   Python_Step2:
+    needs: Python_Installation
     runs-on: ubuntu-latest
+    if: ${{ needs.Python_Installation.result == 'success' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
